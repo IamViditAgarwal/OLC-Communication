@@ -1,0 +1,32 @@
+/* Include the colors class here */
+.black{
+    color: #000000;
+}
+.white{
+    color: #FFFFFF;
+}
+.white-bg{
+    color: #FFFFFF;
+}
+.teal{
+    color: #008080 ;
+}
+.bg{
+    background: #F5F0E5;
+}
+.grey-bg{
+    background: #E1E1E1;
+}
+
+.navy-blue{
+    color: #001F3F;
+}
+.green{
+    color: #009874;
+}
+.header-bg{
+    background: #f9f9f9;
+}
+.body-bg{
+    background: #FAFAFA;
+}
