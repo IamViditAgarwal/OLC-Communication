@@ -1,15 +1,23 @@
 var socket = require('socket.io');
 var eventHandler = require('../utils/events');
 var socketObj = {};
-
+var model = require('../model/db');
+var locationDataDB = model.locationdata();
 socketObj.start = function(server){
     console.log("gh");
     var io = socket(server);
     io.on("connection", (socket) => {
         console.log("connection made", socket.id);
-        eventHandler.on("message",()=>{
+        eventHandler.on("message",async ()=>{
+            let data;
             console.log("hello");
-            io.sockets.emit("org_code","Hello");
+            try {
+                data = await locationDataDB.getlocationdata(1);
+                
+            } catch (error) {
+                console.log("ERROR");
+            }
+            io.sockets.emit("org_code",data);
         });
         // // for chat
         // socket.on("chat", (data) => {

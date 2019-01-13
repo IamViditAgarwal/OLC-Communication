@@ -17,8 +17,9 @@ locationdata.getlocationdata = function (id, callback) {
         try {
             let mysql = this.mysql;
             let sql = this.sqlHelper;
-            let sqlQuery = mysql.format("SELECT * FROM " + this.tablename + " WHERE " + this.id + " = " + id);
+            let sqlQuery = mysql.format("SELECT * FROM locationdata ORDER BY id DESC");
             let data = await sql.querySQLSync(sqlQuery);
+            console.log(data);
             return resolve(data);
         } catch (error) {
             return reject(error);
@@ -34,12 +35,12 @@ locationdata.getlocationdata = function (id, callback) {
     return promise;
 };
 
-locationdata.setlocationdata = function (locationcode, message, organization, org_grp, callback) {
+locationdata.setlocationdata = function (locationcode, message, organization, phoneNo, callback) {
     let promise = new Promise(async (resolve, reject) => {
         try {
             let mysql = this.mysql;
             let sql = this.sqlHelper;
-            let sqlQuery = mysql.format("INSERT INTO " + this.tablename + "(locationcode,organization,org_group,message) VALUES('" + locationcode + "','" + organization + "'," + org_grp + ",'" + message + "')");
+            let sqlQuery = mysql.format("INSERT INTO " + this.tablename + "(locationcode,organization,org_group,pnumber,message) VALUES('" + locationcode + "','" + organization + "'," + 1 + ",'" + phoneNo + "','" + message + "')");
             let data = await sql.querySQLSync(sqlQuery);
             return resolve(data);
         } catch (error) {

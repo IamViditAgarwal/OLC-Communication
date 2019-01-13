@@ -20,15 +20,17 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    console.log(req.body);
-    console.log("hi this is post")
-    res.send('this is post respose')
+    // console.log(req.body);
+    // console.log("hi this is post")
+    // res.send('this is post respose')
 });
 
+// app.use()
 // Routes
 // app.use('/', require('./routes/index'));
 // app.use('/users', require('./routes/users'));
 app.use('/message', require('./routes/message'));
+app.use('/map',require('./routes/map'));
 // app.use('/org',require('./routes/org'));
 
 
