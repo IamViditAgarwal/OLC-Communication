@@ -19,7 +19,7 @@ locationdata.getlocationdata = function (id, callback) {
             let sql = this.sqlHelper;
             let sqlQuery = mysql.format("SELECT * FROM locationdata ORDER BY id DESC");
             let data = await sql.querySQLSync(sqlQuery);
-            console.log(data);
+            // console.log(data);
             return resolve(data);
         } catch (error) {
             return reject(error);

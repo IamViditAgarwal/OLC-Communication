@@ -36,15 +36,15 @@ app.use('/map',require('./routes/map'));
 
 locationdataDB = model.locationdata();
 
-let hello = async function () {
-    try {
-        let data = await locationdataDB.getlocationdata(1);
-        console.log(data);
-    } catch (error) {
-        console.log(error);
-    }
-}
-hello();
+// let hello = async function () {
+//     try {
+//         let data = await locationdataDB.getlocationdata(1);
+//         console.log(data);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// hello();
 const PORT = process.env.PORT || 5000;
 var server = app.listen(PORT, console.log(`Server started on port ${PORT}`));
 // ----- sockets | Start | -----

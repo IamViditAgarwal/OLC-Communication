@@ -3,6 +3,8 @@ var eventHandler = require('../utils/events');
 var socketObj = {};
 var model = require('../model/db');
 var locationDataDB = model.locationdata();
+
+var arr = require('../utils/arrayHandle');
 socketObj.start = function(server){
     console.log("gh");
     var io = socket(server);
@@ -11,13 +13,18 @@ socketObj.start = function(server){
         eventHandler.on("message",async ()=>{
             let data;
             console.log("hello");
-            try {
-                data = await locationDataDB.getlocationdata(1);
-                
-            } catch (error) {
-                console.log("ERROR");
+
+            if(arr.length > 0){
+                arr.pop();
+                try {
+                    data = await locationDataDB.getlocationdata(1);
+                    
+                } catch (error) {
+                    console.log("ERROR");
+                }
+                io.sockets.emit("org_code",data);
+                console.log(arr.length);
             }
-            io.sockets.emit("org_code",data);
         });
         // // for chat
         // socket.on("chat", (data) => {
